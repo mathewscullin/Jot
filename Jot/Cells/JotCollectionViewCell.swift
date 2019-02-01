@@ -90,7 +90,7 @@ class JotCollectionViewCell: UICollectionViewCell {
         firstImage = UIImageView()
         firstImage.translatesAutoresizingMaskIntoConstraints = false
         firstImage.layer.masksToBounds = true
-        firstImage.contentMode = .scaleToFill
+        firstImage.contentMode = .scaleAspectFill
         contentView.addSubview(firstImage) 
     }
     

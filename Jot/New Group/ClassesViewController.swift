@@ -35,12 +35,12 @@ class ClassesViewController: UIViewController, UICollectionViewDataSource, UICol
         super.init(nibName: nil, bundle: nil)
         switch branch {
             case "CHEME" : classesArray = ["CHEME 2880", "CHEME 3130", "CHEME 3240", "CHEME 4010", "CHEME 4220", "CHEME 4320", "CHEME 4610", "CHEME 4710"]
-            case "CS" : classesArray = ["CS 1110", "CS 1112", "CS 1330", "CS 2800", "CS 3110", "CS 3410", "CS 4320", "CS 4410", "CS 4700", "CS 4780"]
-            case "ENGRD" : classesArray = ["ENGRD 2020", "ENGRD 2100", "ENGRD 2110", "ENGRD 2112", "ENGRD 2140", "ENGRD 2300", "ENGRD 2600"]
+            case "CS" : classesArray = ["CS 1110", "CS 1112", "CS 1330","ENGRD/CS 2110", "CS 2800", "CS 3110", "CS 3410", "CS 4320", "CS 4410", "CS 4700", "CS 4780"]
+            case "ENGRD" : classesArray = ["ENGRD 2020", "ENGRD 2100", "ENGRD/CS 2110", "ENGRD 2112", "ENGRD 2140", "ENGRD 2300", "ENGRD 2600"]
             case "ENGRI" : classesArray = ["ENGRI 1101", "ENGRI 1200", "ENGRI 1210", "ENGRI 1220", "ENGRI 1310", "ENGRI 1510"]
-            case "INFO" : classesArray = ["INFO 1300", "INFO 2300"]
-            case "MATH" : classesArray = ["MATH 1910", "MATH 1920", "MATH 2940"]
-            case "PHYS" : classesArray = ["PHYS 2112"]
+            case "INFO" : classesArray = ["INFO 1300", "INFO 2300", "INFO 2770", "INFO 2950"]
+            case "MATH" : classesArray = ["MATH 1910", "MATH 1920", "MATH 2930", "MATH 2940"]
+            case "PHYS" : classesArray = ["PHYS 1112", "PHYS 1116", "PHYS 2213"]
         default:
             return
         }

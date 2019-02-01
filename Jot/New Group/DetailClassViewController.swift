@@ -63,14 +63,6 @@ class DetailClassViewController: UIViewController, UIImagePickerControllerDelega
         let editButton   = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-plus-filled-30"), style: .plain, target: self, action: #selector(handleAdd))
         self.navigationItem.rightBarButtonItem = editButton
         
-        checkAnimation = LOTAnimationView(name: "check")
-        checkAnimation.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
-        checkAnimation.contentMode = .scaleAspectFit
-        checkAnimation.isHidden = true
-        checkAnimation.alpha = 0.0
-        checkAnimation.center = CGPoint(x: view.center.x, y: view.center.y)
-        view.addSubview(checkAnimation)
-        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = padding
@@ -84,6 +76,14 @@ class DetailClassViewController: UIViewController, UIImagePickerControllerDelega
         jotsCollectionView.alwaysBounceVertical = true
         jotsCollectionView.register(JotCollectionViewCell.self, forCellWithReuseIdentifier: jotsCellReuseIdentifier)
         view.addSubview(jotsCollectionView)
+        
+        checkAnimation = LOTAnimationView(name: "check")
+        checkAnimation.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+        checkAnimation.contentMode = .scaleAspectFit
+        checkAnimation.isHidden = true
+        checkAnimation.alpha = 0.0
+        checkAnimation.center = CGPoint(x: view.center.x, y: view.center.y)
+        view.addSubview(checkAnimation)
         
         setUpConstraints()
         getJots()
@@ -101,7 +101,7 @@ class DetailClassViewController: UIViewController, UIImagePickerControllerDelega
     var jotsArray : [Jot] = []
     
     func getJots() {
-        print("jot")
+        jotsArray = []
         let ref = Database.database().reference().child("jots")
         ref.observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String : AnyObject] {
@@ -156,6 +156,7 @@ class DetailClassViewController: UIViewController, UIImagePickerControllerDelega
             jotView.widthAnchor.constraint(equalToConstant: 5/6*viewWidth),
             jotView.heightAnchor.constraint(equalToConstant: 5/7*viewHeight)
             ])
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     func picker() {
@@ -227,7 +228,6 @@ class DetailClassViewController: UIViewController, UIImagePickerControllerDelega
 extension DetailClassViewController: stopDelegate {
     func add() {
         getJots()
-        jotsCollectionView.reloadData()
         UIView.animate(withDuration: 0.5) {
             self.jotView.alpha = 0
             self.blurView.alpha = 0
@@ -239,7 +239,7 @@ extension DetailClassViewController: stopDelegate {
             self.checkAnimation.play()
             self.hide()
         }
-        
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
     func cancel() {
         UIView.animate(withDuration: 0.5) {
@@ -247,6 +247,7 @@ extension DetailClassViewController: stopDelegate {
             self.blurView.alpha = 0
             self.jotView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         }
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     func present () {
