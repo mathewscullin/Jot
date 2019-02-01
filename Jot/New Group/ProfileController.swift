@@ -147,8 +147,6 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate, UINa
         layout.minimumLineSpacing = padding
         layout.sectionInset = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
         
-        setUpProfile()
-        
         classes = UICollectionView(frame: .zero, collectionViewLayout: layout)
         classes.translatesAutoresizingMaskIntoConstraints = false
         classes.backgroundColor = .white
@@ -173,6 +171,7 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate, UINa
         view.addSubview(logout)
         
         setUpConstraints()
+        setUpProfile()
     }
     
     override func viewDidAppear(_ animated: Bool) {

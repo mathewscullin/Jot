@@ -51,7 +51,7 @@ class AddJotView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
             descriptionLecture.heightAnchor.constraint(equalToConstant: 30)
             ])
         let tapToDismiss = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gesture:)))
-        view.addGestureRecognizer(tapToDismiss)
+        self.addGestureRecognizer(tapToDismiss)
         
         plus = UIButton()
         plus.translatesAutoresizingMaskIntoConstraints = false
@@ -142,7 +142,7 @@ class AddJotView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     @objc func addImage() {
-        self.delegate?.present() 
+        self.delegate?.present()
     }
     
     func addImageCollection(image: UIImage?) {
@@ -166,7 +166,7 @@ class AddJotView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     @objc func viewTapped(gesture: UITapGestureRecognizer) {
-        view.endEditing(true)
+        self.endEditing(true)
     }
     
     func setUpJot() {
