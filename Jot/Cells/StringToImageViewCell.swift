@@ -42,6 +42,7 @@ class StringToImageViewCell: UICollectionViewCell {
     
     func configure(for imageURL: String) {
         image.loadImageUsingCache(urlString: imageURL)
+        print(imageURL)
     }
     
     required init?(coder aDecoder: NSCoder) {

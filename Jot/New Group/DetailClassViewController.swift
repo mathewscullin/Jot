@@ -119,7 +119,6 @@ class DetailClassViewController: UIViewController, UIImagePickerControllerDelega
                 if jot.className == self.classTitle {
                     self.jotsArray.append(jot)
                 }
-                
                 DispatchQueue.main.async {
                     self.jotsCollectionView.reloadData()
                 }
@@ -227,7 +226,6 @@ class DetailClassViewController: UIViewController, UIImagePickerControllerDelega
 
 extension DetailClassViewController: stopDelegate {
     func add() {
-        getJots()
         UIView.animate(withDuration: 0.5) {
             self.jotView.alpha = 0
             self.blurView.alpha = 0

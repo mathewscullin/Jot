@@ -173,8 +173,8 @@ class AddJotView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
         let imageName = NSUUID().uuidString
         let ref = Database.database().reference().child("jots")
         let childRef = ref.childByAutoId()
+        let storageRef = Storage.storage().reference().child("jotImages").child("\(imageName).jpeg")
         for picture in imagesArray {
-            let storageRef = Storage.storage().reference().child("jotImages").child("\(imageName).jpeg")
             if let uploadData = picture.jpegData(compressionQuality: 0.2) {
                 storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                     if error != nil {

@@ -33,6 +33,7 @@ class ImageViewController: UIViewController {
         image.layer.masksToBounds = true
         image.layer.cornerRadius = 10
         image.loadImageUsingCache(urlString: imageURL)
+        print(imageURL)
         view.addSubview(image)
         
         NSLayoutConstraint.activate([

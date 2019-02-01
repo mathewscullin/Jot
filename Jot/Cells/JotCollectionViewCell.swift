@@ -32,7 +32,9 @@ class JotCollectionViewCell: UICollectionViewCell {
             }
             descriptor.text = jot?.descriptor
             
-            if let realImageURL = jot?.images![0] as? String {
+            print(jot?.images)
+            
+            if let realImageURL = jot?.images![0] {
                 firstImage.loadImageUsingCache(urlString: realImageURL)
             }
             
@@ -68,7 +70,7 @@ class JotCollectionViewCell: UICollectionViewCell {
         
         nameLabel = UILabel()
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.font = .systemFont(ofSize: 22, weight: .medium)
+        nameLabel.font = .systemFont(ofSize: 20, weight: .medium)
         nameLabel.textColor = .gray
         nameLabel.textAlignment = .left
         contentView.addSubview(nameLabel)
