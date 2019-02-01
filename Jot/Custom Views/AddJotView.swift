@@ -50,6 +50,9 @@ class AddJotView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
             descriptionLecture.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
             descriptionLecture.heightAnchor.constraint(equalToConstant: 30)
             ])
+        let tapToDismiss = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gesture:)))
+        view.addGestureRecognizer(tapToDismiss)
+        
         plus = UIButton()
         plus.translatesAutoresizingMaskIntoConstraints = false
         plus.setImage(#imageLiteral(resourceName: "icons8-screenshot-30"), for: .normal)
@@ -138,13 +141,8 @@ class AddJotView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
         return CGSize(width: length, height: length * (4/3))
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        imagesArray.remove(at: indexPath.item)
-        images.reloadData()
-    }
-    
     @objc func addImage() {
-        self.delegate?.present()
+        self.delegate?.present() 
     }
     
     func addImageCollection(image: UIImage?) {
@@ -165,6 +163,10 @@ class AddJotView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
         }
         setUpJot()
         self.delegate?.add() 
+    }
+    
+    @objc func viewTapped(gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     func setUpJot() {
